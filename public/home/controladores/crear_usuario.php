@@ -1,5 +1,5 @@
  <?php
-include '../../../Config/conexionBD.php';
+include '../../../config/conexionBD.php';
  $nombres = $_POST['nombre'];
  $apellidos = $_POST['apellido'];
  $direccion = $_POST['direccion'];
