@@ -7,7 +7,7 @@ function crearUsuario() {
 	let correo = document.getElementById("correo").value;
 	let password = document.getElementById("password").value;
 	let http = new XMLHttpRequest();
-    let url = '/Bellisima/Public/Home/Controladores/crear_usuario.php';
+    let url = '/Bellisima/public/home/controladores/crear_usuario.php';
     let params = 'nombre='+nombre+'&apellido='+apellido+'&direccion='+direccion+'&telefono='+telefono+'&correo='+correo+
         '&password='+password;
 	
