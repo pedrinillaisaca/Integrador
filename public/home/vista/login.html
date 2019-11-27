@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../controlador/controlador.js"></script>
     <style type="text/css">
         .login-form {
             width: 340px;
@@ -34,7 +35,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="/" method="post">
+    <form onsubmit="return logIn()" method="post">
         <h2 class="text-center">Iniciar Sesion</h2>
         <div class="form-group">
             <label for="mail"></label>
@@ -45,13 +46,13 @@
             <input id="password" type="password" class="form-control" placeholder="Contraseña" required="required">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block" onsubmit="logIn()">Log in</button>
         </div>
         <div class="clearfix">
-            <a href="#" class="pull-right">Entrar sin registrarse</a>
+            <a href="javascript:entrarSinRegistro()" class="pull-right">Entrar sin registrarse</a>
         </div>
     </form>
-    <p class="text-center"><a href="#">Registrate</a></p>
+    <p class="text-center"><a href="javascript:registro()">Registrate</a></p>
 </div>
 </body>
 </html>
