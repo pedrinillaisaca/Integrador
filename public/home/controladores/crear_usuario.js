@@ -1,5 +1,5 @@
 function crearUsuario() {
-	
+
 	let nombre = document.getElementById("nombre").value;
 	let apellido = document.getElementById("apellido").value;
 	let direccion = document.getElementById("direccion").value;
@@ -22,12 +22,64 @@ function crearUsuario() {
     return false;
 	
 }
+function iniciar_sesion() {
+
+	let correo = document.getElementById('correo').value;
+	let contrasena = document.getElementById('password').value;
+	let http = new XMLHttpRequest();
+    let url = '/Bellisima/public/home/controladores/login.php';
+    let params = 'mail='+correo+'&password='+contrasena;
+	
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.onreadystatechange = function() {
+        if(http.readyState === 4 && http.status === 200) {
+            alert(http.responseText);
+			let leo = this.responseText;
+            let spliteo = leo.split(';');
+            if(spliteo[0] === 'user'){
+                window.location.assign("../vista/index.html")
+            }else if(spliteo[0] =='admin'){
+                alert('ventana administrador');
+            }
+
+        }
+    };
+    http.send(params);
+    return false;
+	
+	
+}
+	
+
+/*function modificar_usuario() {
+	//let nombre = document.getElementById("codigo").value;
+	let nombre = document.getElementById("nombre").value;
+	let apellido = document.getElementById("apellido").value;
+	let direccion = document.getElementById("direccion").value;
+	let telefono  =document.getElementById("telefono").value;
+	let correo = document.getElementById("correo").value;
+	let password = document.getElementById("password").value;
+	let http = new XMLHttpRequest();
+    let url = '/Bellisima/public/home/controladores/crear_usuario.php';
+    let params = 'nombre='+nombre+'&apellido='+apellido+'&direccion='+direccion+'&telefono='+telefono+'&correo='+correo+
+        '&password='+password;
+	
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.onreadystatechange = function() {
+        if(http.readyState === 4 && http.status === 200) {
+            alert(http.responseText);
+        }
+    };
+    http.send(params);
+    return false;
+}
 	
 	
 	
 	
-	
- /*if (nombre == "") {
+ /*\if (nombre == "") {
  document.getElementById("informacion").innerHTML = "";
  } else {
  if (window.XMLHttpRequest) {
