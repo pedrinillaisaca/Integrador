@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../css/StyleProductos.css">
+    <script src="../../controladores/admin/ControladorProducto.js"></script>
     <title>Controlador Productos</title>
 </head>
 <body>
-
+<div>
+    <form id="formulario">
+        <input type="file" id="file" accept=".jpg, .png" onchange="abrirImg()"/>
+        <label for="file">Seleccione la imagen del Producto</label><br><br>
+        <img id="abrir_img" src="" alt="" style="width: 200px; height: 200px"><br>
+        <label for="precio">Precio:</label><br>
+        <input id="precio" name="precio" type="text"><br>
+        <label for="iva">IVA:</label><br>
+        <input id="iva" name="iva" type="number"><br>
+        <label for="stock">Stock:</label><br>
+        <input id="stock" name="stock" type="number"><br><br>
+        <label for="small">Talla SMALL</label><br>
+        <input id="small" type="checkbox" name="small" value="S"><br>
+        <label for="medium">Talla MEDIUM</label><br>
+        <input id ="medium" type="checkbox" name="medium" value="M"><br>
+        <label for="large">Talla LARGE</label><br>
+        <input id = "large" type="checkbox" name="large" value="L"><br><br>
+        <label for="nombre">Nombre:</label><br>
+        <input id="nombre" name="nombre" type="text"><br>
+        <label for="descripcion">Descripcion:</label><br>
+        <input id="descripcion" name="nombre" type="text"><br>
+        <label for="color">Escriba el Color:</label><br>
+        <input id="color" name="color" type="text">
+    </form>
+    <button onclick="guardarPishure()">ENVIAR IMGS</button>
+</div>
 </body>
 </html>

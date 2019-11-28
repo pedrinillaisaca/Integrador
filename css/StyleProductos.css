@@ -1,0 +1,85 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    background: #2c302e;
+    width: 100%;
+    text-align: center;
+    color : #cf914e;
+    margin: 20px 0 20px 0;
+}
+
+form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 50%;
+    border: solid 2px #cf914e;
+}
+
+input, select{
+    width: 70%;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 4px #ccc;
+    border-radius: 5px;
+}
+
+#login{
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    padding-left: 10px;
+}
+
+#boton{
+    float: right;
+    background-color: #cf914e;
+    border: none;
+    margin-right: 5%;
+    border-radius: 2px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+a{
+    color: #cf914e;
+}
+
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+}
+
+[type="file"] + label {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 2%;
+    height: 20px;
+    width: 70%;
+    background-color: #88908d;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+}
+
+[type="file"]:focus + label,
+[type="file"] + label:hover {
+    background-color: #f15d22;
+}
+
+[type="file"]:focus + label {
+    outline: 1px dotted #CF914E;
+}
