@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+<link rel="stylesheet" href="../../../css/crear_usuario.css">
+
+<script type="text/javascript" src="../controladores/crear_usuario.js"></script>
+</head>
+<body>
+
+ <form id="formulario01" method="POST" action="" onsubmit="return modificarUsuario()">
+	 <h1>Registrarse</h1>
+ <label for="nombre">Nombre/s (*)</label>
+ <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese sus nombres ..."
+required/>
+ <br>
+ <label for="apellido">Apellido(*)</label>
+ <input type="text" id="apellido" name="apellido" value="" placeholder="Ingrese sus dos apellidos
+..." required/>
+ <br>
+ <label for="direccion">Direccion (*)</label>
+ <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su direccion
+..." required/>
+<br>
+ <label for="telefono">Telefono (*)</label>
+ <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su telefono ..."
+required/>
+ <br>
+ <label for="email">Correo (*)</label>
+ <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo
+..." required/>
+ <br>
+ <label for="password">Constraseña (*)</label>
+ <input type="password" id="password" name="password" value="" placeholder="Ingrese su contrasena ..." required/>
+ <br>
+	 <input type="submit" id="crear" name="crear" value="Aceptar" onclick="return modificarUsuario()" />
+	  <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+	 <input type="button" value="Regresar"id="register" onclick="window.open('login.html')" />
+ 
+
+
+	 <div id="informacion"><b>Mensaje</b></div>
+ </form>
+</body>
+</html>

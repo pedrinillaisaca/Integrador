@@ -1,0 +1,94 @@
+body {
+	background-image: url(../imgs/public/rosie-huntington-whiteley-2016-wallpaper.jpg);
+
+  font-family: 'Inter UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+label {
+  color:  #c2c2c5;
+  display: block;
+  font-size: 14px;
+  height: 16px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+	padding-left: 20px;
+}
+h1{
+	text-align: center;
+	color: white;
+}
+input {
+  background: transparent;
+  border: 0;
+  color: #f2f2f2;
+  font-size: 20px;
+  height: 30px;
+  line-height: 30px;
+  outline: none !important;
+  width: 100%;
+	text-align:center;
+}
+#cancelar{
+	float: left;
+	 display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px;
+  width: 25%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 2%;
+	margin-left: 2%;
+}
+#register{
+	float: left;
+	 display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px;
+  width: 25%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 2%;
+	margin-left: 2%;
+}
+
+
+#crear {
+	
+	float: left;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 0px;
+  width: 25%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+#formulario01 {
+    width: 30%;
+	height: 550px;
+    border-width: 2px;
+	border-color: red;
+	border-style: solid;
+	margin: auto;
+	background-color: black;
+	margin-top: 7%;
+	margin-left: 10%;
+}
