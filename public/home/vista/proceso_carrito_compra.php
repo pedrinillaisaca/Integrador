@@ -1,8 +1,13 @@
 <?php
 session_start(); //start session
+
+if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+    header("Location: /Bellisima/public/home/vista/login.html");
+}
 include("../../../config/conexionBD.php"); //include config file
 setlocale(LC_MONETARY, "en_US"); // US national format (see : http://php.net/money_format)
 ############# add products to session #########################
+
 if (isset($_POST["producto_id"])) {
 	foreach ($_POST as $key => $value) {
 		$new_product[$key] = filter_var($value, FILTER_SANITIZE_STRING); //crear una nueva gama de productos
