@@ -20,10 +20,6 @@ include '../../../config/conexionBD.php';
 }
 //cerrar la base de datos
 $conn->close();
-
-
-
-
 ?>
 
 

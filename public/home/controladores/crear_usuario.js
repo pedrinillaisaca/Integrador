@@ -40,7 +40,7 @@ function iniciar_sesion() {
             if(spliteo[0] === 'user'){
                 window.location.assign("../vista/index.html")
             }else if(spliteo[0] =='admin'){
-                alert('ventana administrador');
+                window.location.assign("../../../private/vista/admin/index.php")
             }
 
         }

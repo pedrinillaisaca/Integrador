@@ -1,0 +1,84 @@
+body {
+    background-color: #c2c2c5;
+    background-image: url("../imgs/private/marie-claire2011--006_1250.jpg");
+}
+form{
+    background-color: #1e1f23;
+    width: 30%;
+    height: 500px;
+    margin-left: 20%;
+    margin-top: 10%;
+    border-style: groove;
+    border-color:#f00;
+    box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(255,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+    position: relative;
+
+}
+input{
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    height: 30px;
+    margin-bottom: 15px;
+
+
+}
+#modificar{
+    background-color: #4b924b;
+    color: white;
+    width: 30%;
+    margin-left: 20%;
+    font-weight: bold;
+    box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(255,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+    position: relative;
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.2);
+}
+#modificar:hover {
+    box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 15px rgba(255,255,255,0.4), inset 0 -2px 9px rgba(0,0,0,0.2);
+    color: #fff !important;
+}
+#modificar:active {
+    top: 7px;
+    box-shadow: 0 2px 0 #393939, 0px 4px 4px rgba(0,0,0,0.4), inset 0px 2px 5px rgba(0,0,0,0.2);
+    color: #fff !important;
+}
+#cancelar{
+    background-color: #898989;
+    color: white;
+    width: 30%;
+    font-weight: bold;
+    box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(255,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+    position: relative;
+}
+#cancelar:hover {
+    box-shadow: 0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 15px rgba(255,255,255,0.4), inset 0 -2px 9px rgba(0,0,0,0.2);
+    color: #fff !important;
+}
+label{
+ margin: 15px;
+    color: white;
+    margin-left: 17%;
+}
+#rol{
+    margin-top: 10%;
+    margin-left: 22%;
+}
+#nombre{
+    margin-left: 14%;
+}
+#apellido{
+    margin-left: 14%;
+}
+#direccion{
+    margin-left: 13%;
+}
+#telefono{
+    margin-left: 15%;
+}
+#correo{
+
+}
+h2{
+    text-align: center;
+    color: #c6ce00;
+}
