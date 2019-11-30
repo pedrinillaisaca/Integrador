@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../../css/StyleProductos.css">
     <script src="../../controladores/admin/ControladorProducto.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Controlador Productos</title>
 </head>
 <body>
 <div>
     <form id="formulario">
-        <input type="file" id="file" accept=".jpg, .png" onchange="abrirImg()"/>
+        <input type="file" name="file" id="file" accept=".jpg" onchange="abrirImg()"/>
         <label for="file">Seleccione la imagen del Producto</label><br><br>
-        <img id="abrir_img" src="" alt="" style="width: 200px; height: 200px"><br>
+        <img id="abrir_img" src="" alt="" style="width: 50%; height: 50%"><br>
         <label for="precio">Precio:</label><br>
         <input id="precio" name="precio" type="text"><br>
         <label for="iva">IVA:</label><br>
@@ -31,7 +32,13 @@
         <label for="color">Escriba el Color:</label><br>
         <input id="color" name="color" type="text">
     </form>
-    <button onclick="guardarPishure()">ENVIAR IMGS</button>
+    <form id="otroform">
+        <input type="button" onclick="guardarPishure()" value="Crear Producto">
+        <input type="button" onclick="listar()" value="Listar Productos">
+        <input type="button" onclick="" value="Actualizar Producto">
+        <input type="button" onclick="" value="Borrar Producto">
+
+    </form>
 </div>
 </body>
 </html>

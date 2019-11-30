@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="UTF-8">
+    <head>
+        <title>Listado Productos</title>
+        <link rel="stylesheet" type="text/css" href="../../../css/StyleProductos.css">
+        <script src="../../controladores/admin/ControladorProducto.js"></script>
+        <style>
+            #tablita {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            tr:nth-child(even){background-color: #45454d;}
+
+            tr:hover {background-color: #ddd;}
+
+            th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #282828;
+                color: white;
+            }
+
+            button{
+                border-radius: 5px;
+            }
+
+            #elm:hover{
+                color: red;
+            }
+
+            label{
+                margin-left: auto;
+
+            }
+
+            #tablaProductos{
+                width: 70%;
+                height: 70%;
+                margin-top: 5%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body onload="mostrarProducto()">
+        <label style="font-size: 5vw">MENU PRODUCTOS</label>
+        <div id="tablaProductos">
+
+        </div>
+    </body>
+
+</html>
