@@ -1,5 +1,8 @@
 
 	/*, aunque haya elementos que no hayan sido cargados del */
+	function AgrregarCarrito(){
+
+	}
 $(document).ready(function(){	
 	/* sirve para hacer cosas cuando la página está lista para recibir instrucciones jQuery que modifiquen el DOM. */
 		$(".form-item").submit(function(e){
@@ -16,7 +19,7 @@ $(document).ready(function(){
 				$("#cart-info").html(data.items); //artículos totales en el elemento de información del carrito
 				button_content.html('Agregar Carrito'); //restablecer el texto del botón al texto original
 				alert("A añadido al carrito de compras!"); //alert user
-				if($(".shopping-cart-box").css("display") == "block"){ //si la caja del carrito sigue visible
+				if($(".shopping-cart-box").css("display") === "block"){ //si la caja del carrito sigue visible
 					$(".cart-box").trigger( "click" ); //disparador haga clic para actualizar la caja del carrito.
 				}
 			})

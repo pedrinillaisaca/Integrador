@@ -1,6 +1,6 @@
 <?php
 session_start(); //start session
-include("../../../config/conexionBD.php"); //include config file
+include("../../config/conexionBD.php"); //include config file
 setlocale(LC_MONETARY, "en_US"); // US national format (see : http://php.net/money_format)
 ?>
 <!DOCTYPE HTML>
@@ -10,8 +10,8 @@ setlocale(LC_MONETARY, "en_US"); // US national format (see : http://php.net/mon
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Revisar su carrito antes de comprar</title>
     <link href="../../../css/estilo_carrito.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="../../controladores/user/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../../controladores/user/proceso_carrito.js"></script>
+    <script type="text/javascript" src="../../../private/controladores/user/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../../private/controladores/user/proceso_carrito.js"></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@ setlocale(LC_MONETARY, "en_US"); // US national format (see : http://php.net/mon
 		foreach ($_SESSION["products"] as $product) { //Imprima cada artículo, cantidad y precio.
 			$producto_nombre = $product["producto_nombre"];
 			$producto_cantidad = $product["producto_cantidad"];
-			$product_price = $product["producto_precio"];
+
 			$product_code = $product["producto_codigo"];
 			$product_color = $product["producto_color"];
 			$product_size = $product["producto_talla"];

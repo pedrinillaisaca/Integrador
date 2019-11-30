@@ -68,32 +68,6 @@ include("../../../config/conexionBD.php"); //include config file
         </ul>//pilas aqui
     </nav>
 
-    <div class="container-fluid">
-        <div class="row" style="background: #555; margin: 1%;>
-        <div class=" col">
-            <div class="row" style="width: 700px; float: right; width: 100%;margin: 20px;height: 490px;padding: 0px;font-size: x-large;>
-                <div class=" col-md-4">
-                <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
-                <div id="sidebar" class="well sidebar-nav">
-                    <h5><i class="glyphicon glyphicon-home"></i>
-                        <small><b>MANAGEMENT</b></small>
-                    </h5>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Add</a></li>
-                        <li><a href="#">Search</a></li>
-                    </ul>
-                    <h5><i class="glyphicon glyphicon-user"></i>
-                        <small><b>USERS</b></small>
-                    </h5>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">List</a></li>
-                        <li><a href="#">Manage</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="col-6" style="width: 50%; float: left">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -134,7 +108,10 @@ include("../../../config/conexionBD.php"); //include config file
     </div>
 
     <div align="center">
+
+
         <h3>CATALOGO DE MUJERES</h3>
+        <i class="fab fa-cc-visa"></i>
 
 
         <?php

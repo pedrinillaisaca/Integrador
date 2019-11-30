@@ -16,6 +16,7 @@ ul.products-wrp li{
     margin: 5px;
     background: #fff;
     text-align: center;
+    width: 24%
 }
 ul.products-wrp li h4{
     margin: 0;
@@ -47,6 +48,7 @@ ul.products-wrp li .item-box button[disabled=disabled]{
 .cart-box {
     display: block;
     width: 60px;
+    height: 35%;
     background: rgba(219, 0, 33, 1) url(../imgs/public/cart-icon.png) no-repeat 20px 5px;
     padding: 4px 8px 4px 8px;
     border-radius: 30px;
@@ -153,4 +155,12 @@ hr{
 img{
     height: 440px;
 
+}
+.navbar-inverse .navbar-brand {
+     color: peru;
+     font-size: x-large;
+     font-family: fantasy;
+ }
+.navbar-inverse .navbar-brand {
+    color: peru;
 }
