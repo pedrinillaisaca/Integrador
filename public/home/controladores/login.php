@@ -14,7 +14,8 @@ MD5('$contrasena')";
                 echo 'admin'.';'.$codigo;
             }else if ($row["per_rol"]=='U'){
                 $codigo=$row['per_id'];
-                echo 'user'.';'.$codigo;
+                $nombre=$row['per_nombre'];
+                echo 'user'.';'.$codigo.';'.$nombre;
             }
         }
 	}else{

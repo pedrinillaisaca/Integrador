@@ -10,7 +10,6 @@
   session_start();
   if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
   header("Location: /Bellisima/public/home/vista/login.html");
-  //header("Location: /Bellisima/public/home/vista/login.html");
   }
  $codigo = $_GET["codigo"];
  $sql = "SELECT * FROM persona where per_id=$codigo";

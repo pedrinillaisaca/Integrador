@@ -13,7 +13,7 @@ include '../../../config/conexionBD.php';
  } else {
  if($conn->errno == 1062){
  echo "<p class='error'>La persona con la cedula $cedula ya esta registrada en el sistema </p>";
-  header("Location: ../vista/index.html");
+  header("Location: ../vista/index.php");
  }else{
     echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
 }

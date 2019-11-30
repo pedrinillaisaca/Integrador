@@ -9,7 +9,7 @@ function cerrarSesion(){
         }
     };
     xml.send();
-    window.open('../../../public/home/vista/index.html');
+    window.open('../../../public/home/vista/primero.html');
     //return false;
 }
 
@@ -83,7 +83,7 @@ function verificar_cuenta() {
         }
     };
     xml.send();
-    window.open('../../../public/home/vista/index.html');
+    window.open('../../../public/home/vista/primero.html');
     //return false;
 
 }

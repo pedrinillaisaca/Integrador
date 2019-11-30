@@ -11,7 +11,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
-    header("Location: /SistemaDeGestion/public/vista/login.html");
+    header("Location: ../../../public/home/vista/login.html");
 }
 $codigo = $_GET["codigo"];
 $sql = "SELECT * FROM persona where per_id=$codigo";
@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
             <br>
 
             <input type="submit" id="modificar" name="modificar" value="Modificar" onclick="return modificar_usuario()" />
-            <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+            <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="window.open('../../../public/home/vista/index.php?codigo='+)"/>
         </form>
         <?php
     }

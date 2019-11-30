@@ -38,9 +38,11 @@ function iniciar_sesion() {
 			let leo = this.responseText;
             let spliteo = leo.split(';');
             if(spliteo[0] === 'user'){
-                window.location.assign("../vista/index.html")
+                let codigo=spliteo[1];
+                let nombre=spliteo[2];
+                window.location="../vista/index.php?codigo="+codigo+'&nombre='+nombre;
             }else if(spliteo[0] =='admin'){
-                window.location.assign("../../../private/vista/admin/index.php")
+                window.location="../../../private/vista/admin/index.php?correo="+correo+'&contrasena='+contrasena;
             }
 
         }
