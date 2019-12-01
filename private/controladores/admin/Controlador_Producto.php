@@ -121,6 +121,7 @@ function actualizar(){
     $descripcion  = $_POST['descripcion'];
     $sql = "update producto set producto_img='$nombre_img', producto_precio='$precio', producto_iva='$iva', producto_stock='$stock',
                 producto_talla='$talla', producto_nombre='$nombre', producto_color='$color', producto_descripcion='$descripcion' where producto_id='$prod_id'";
+    echo $sql;
     if($conn->query($sql)== TRUE){
         echo 1;
     }else{

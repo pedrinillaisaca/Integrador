@@ -210,7 +210,7 @@ function updateProducto(data){
         alert('Debe ingresar al menos un color en las prendas');
         return false;
     }
-    let prod_id = document.getElementById('hidden_id');
+    let prod_id = document.getElementById('hidden_id').value;
     let ajax = new XMLHttpRequest();
     let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=actualizar&nombre_img='+data+'&precio='+precio+'&iva='+iva+'&stock='+stock+'&talla='+talla
@@ -225,6 +225,7 @@ function updateProducto(data){
                 alert('Se ha ingresado el producto correctamente.');
             }else{
                 alert('Ha ocurrido un error al momento del ingreso.');
+                alert(this.responseText);
             }
         }
     };
