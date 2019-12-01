@@ -1,5 +1,5 @@
 <?php
-include '../../../config/conexionDB.php';
+include '../../../config/conexionBD.php';
 
 if($_POST['metodo'] === 'imagen'){
     $leo = $_FILES['file']['name'];
@@ -29,6 +29,24 @@ if($_POST['metodo'] === 'insertar'){
     borrar();
 }else if($_POST['metodo'] === 'buscar'){
     buscar();
+}else if($_POST['metodo'] === 'editar'){
+    getProducto();
+}
+
+function getProducto(){
+    $id = $_POST['id'];
+    global $conn;
+    $sql = "select * from producto where producto_id='$id'";
+    $result = $conn->query($sql);
+    $strProducto = "";
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $strProducto = $strProducto . $row['producto_img'] .';'. $row['producto_precio'] .';'. $row['producto_iva'] .';'. $row['producto_stock']
+                .';'. $row['producto_talla'] .';'. $row['producto_nombre'] .';'. $row['producto_color'] .';'. $row['producto_descripcion'];
+        }
+        echo $strProducto;
+    }
+    $conn->close();
 }
 
 function insertar(){
@@ -56,12 +74,10 @@ function insertar(){
 
 function listar(){
     global $conn;
-    $sql = "select producto_precio, producto_iva, producto_stock, producto_talla, producto_nombre, producto_color,
+    $sql = "select producto_id, producto_precio, producto_iva, producto_stock, producto_talla, producto_nombre, producto_color,
        producto_descripcion from producto";
     $resultado = $conn->query($sql);
     if($resultado->num_rows > 0){
-        echo "<label for='txt_buscar'>Nombre del producto:</label>";
-        echo "<input id='txt_buscar' type='text' placeholder='Nombre' onkeyup='buscar()'>";
         echo "<table id='tablita'>";
         echo "<tr>";
         echo "<th>Nombre</th>";
@@ -75,7 +91,6 @@ function listar(){
         echo "<th>ELIMINAR</th>";
         echo "</tr>";
         while($row = $resultado->fetch_assoc()){
-            array_push($response, $row['producto_nombre'], $row);
             echo "<tr>";
                 echo "<td>" . $row['producto_nombre'] . "</td>";
                 echo "<td>" . $row['producto_descripcion'] . "</td>";
@@ -84,8 +99,8 @@ function listar(){
                 echo "<td>" . $row['producto_stock'] . "</td>";
                 echo "<td>" . $row['producto_talla'] . "</td>";
                 echo "<td>" . $row['producto_color'] . "</td>";
-                echo "<td>" . "<button onclick='abrirModificar()'>MODIFICAR</button>" . "</td>";
-                echo "<td>" . "<button id='elm' onclick='eliminar()'>ELIMINAR</button>" . "</td>";
+            echo "<td>" . "<button id='". $row['producto_id'] ."' onclick='abrirModificar(this)'>MODIFICAR</button>" . "</td>";
+            echo "<td>" . "<button id='". $row['producto_id'] ."' onclick='eliminar(this)'>ELIMINAR</button>" . "</td>";
             echo "</tr>";
         }
         echo "</table>";
@@ -94,7 +109,24 @@ function listar(){
 }
 
 function actualizar(){
-
+    global $conn;
+    $nombre_img = $_POST['nombre_img'];
+    $precio  = $_POST['precio'];
+    $iva  = $_POST['iva'];
+    $stock  = $_POST['stock'];
+    $talla  = $_POST['talla'];
+    $nombre  = $_POST['nombre'];
+    $color  = $_POST['color'];
+    $prod_id = $_POST['prod_id'];
+    $descripcion  = $_POST['descripcion'];
+    $sql = "update producto set producto_img='$nombre_img', producto_precio='$precio', producto_iva='$iva', producto_stock='$stock',
+                producto_talla='$talla', producto_nombre='$nombre', producto_color='$color', producto_descripcion='$descripcion' where producto_id='$prod_id'";
+    if($conn->query($sql)== TRUE){
+        echo 1;
+    }else{
+        echo $conn->error;
+    }
+    $conn->close();
 }
 
 function borrar(){
@@ -102,7 +134,41 @@ function borrar(){
 }
 
 function buscar(){
+    global  $conn;
+    $buscar = $_POST['valor'];
+    $sql = "select producto_id, producto_precio, producto_iva, producto_stock, producto_talla, producto_nombre, producto_color,
+       producto_descripcion from producto where producto_nombre like '%" . $buscar . "%'";
 
+    $resultado = $conn->query($sql);
+    if($resultado->num_rows >0){
+        echo "<table id='tablita'>";
+        echo "<tr>";
+        echo "<th>Nombre</th>";
+        echo "<th>Descripcion</th>";
+        echo "<th>Precio</th>";
+        echo "<th>IVA</th>";
+        echo "<th>Stock</th>";
+        echo "<th>Talla</th>";
+        echo "<th>Color</th>";
+        echo "<th>MODIFICAR</th>";
+        echo "<th>ELIMINAR</th>";
+        echo "</tr>";
+        while($row = $resultado->fetch_assoc()){
+            echo "<tr>";
+            echo "<td>" . $row['producto_nombre'] . "</td>";
+            echo "<td>" . $row['producto_descripcion'] . "</td>";
+            echo "<td>" . $row['producto_precio'] . "</td>";
+            echo "<td>" . $row['producto_iva'] . "</td>";
+            echo "<td>" . $row['producto_stock'] . "</td>";
+            echo "<td>" . $row['producto_talla'] . "</td>";
+            echo "<td>" . $row['producto_color'] . "</td>";
+            echo "<td>" . "<button id='". $row['producto_id'] ."' onclick='abrirModificar(this)'>MODIFICAR</button>" . "</td>";
+            echo "<td>" . "<button id='". $row['producto_id'] ."' onclick='eliminar(this)'>ELIMINAR</button>" . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+    $conn->close();
 }
 
 function crearTabla($result){

@@ -6,8 +6,17 @@
     <script src="../../controladores/admin/ControladorProducto.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Controlador Productos</title>
+    <script>
+        function getID(){
+            let params = new URLSearchParams(location.search);
+            if(params.get('id') != null){
+                document.getElementById('hidden_id').value = params.get('id');
+                cargarParaEditar(params.get('id'));
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="getID()">
 <div>
     <form id="formulario">
         <input type="file" name="file" id="file" accept=".jpg" onchange="abrirImg()"/>
@@ -31,6 +40,7 @@
         <input id="descripcion" name="nombre" type="text"><br>
         <label for="color">Escriba el Color:</label><br>
         <input id="color" name="color" type="text">
+        <input id="hidden_id" type="hidden" style="visibility: hidden">
     </form>
     <form id="otroform">
         <input type="button" onclick="guardarPishure()" value="Crear Producto">

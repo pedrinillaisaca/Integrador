@@ -15,7 +15,6 @@ function abrirImg() {
 }
 
 function guardarPishure(){
-    alert('entra la pishula');
     formData = new FormData($('#formulario')[0]);
     formData.append('metodo', 'imagen');
     $.ajax({
@@ -106,12 +105,131 @@ function listar(){
     window.location = '../../vista/admin/ListadoProductos.html';
 }
 
-function abrirModificar(){
-    alert('ALGO');
+function abrirParaModificar(param){
+    window.location = '../../vista/admin/Producto.html?id='+param;
+}
+
+function cargarParaEditar(id){
+    let ajax = new XMLHttpRequest();
+    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let params = 'metodo=editar&id='+id;
+    ajax.open('POST', url, true);
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajax.onreadystatechange = function () {
+        if(this.status === 200 && this.readyState === 4){
+            let retorno = this.responseText;
+            let spliteo = retorno.split(';');
+            document.getElementById('precio').value = spliteo[1];
+            document.getElementById('iva').value = spliteo[2];
+            document.getElementById('stock').value = spliteo[3];
+
+            let spliteoTalla = spliteo[4].split(',');
+
+            if(spliteoTalla[0] ==='S') document.getElementById('small').checked = true;
+
+            if(spliteoTalla[1] ==='M') document.getElementById('medium').checked = true;
+
+            if(spliteoTalla[2] ==='L') document.getElementById('large').checked = true;
+
+            document.getElementById('nombre').value = spliteo[5];
+            document.getElementById('descripcion').value = spliteo[7];
+            document.getElementById('color').value = spliteo[6];
+
+        }
+    };
+    ajax.send(params);
+    return false;
+}
+
+function abrirModificar(origen){
+    abrirParaModificar(origen.id);
 }
 
 function actualizar(){
+    formData = new FormData($('#formulario')[0]);
+    formData.append('metodo', 'imagen');
+    $.ajax({
+        type: "POST",
+        url: '/Integrador/private/controladores/admin/Controlador_Producto.php',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            alert(data);
+            updateProducto(data);
+        }
+    });
 
+
+}
+
+function updateProducto(data){
+    let precio = document.getElementById('precio').value;
+    if(precio <= 0){
+        alert('El precio debe ser mayor que cero');
+        return false;
+    }
+    let iva = document.getElementById('iva').value;
+    if(iva < 0){
+        alert('El valor del IVA debe ser mayor o igual que cero');
+        return false;
+    }
+    let stock = document.getElementById('stock').value;
+    if(stock < 0){
+        alert('El valor del Stock debe ser mayor o igual que cero');
+        return false;
+    }
+    // REVISAR SI SMALL / MEDIUM / LARGE ESTA SELECTED
+    let talla;
+    if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
+        && document.getElementById('large').checked === true)
+        talla = 'S,M,L';
+    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
+        && document.getElementById('large').checked === false)
+        talla = 'S,M';
+    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === false
+        && document.getElementById('large').checked === false)
+        talla = 'S';
+    else {
+        alert('Debe seleccionar al menos una talla de ropa');
+        return false;
+    }
+
+    let nombre = document.getElementById('nombre').value;
+    if(nombre === '' || nombre === null){
+        alert('Debe ingresar un valor en el nombre de la prenda.');
+        return false;
+    }
+    let descripcion = document.getElementById('descripcion').value;
+    if(descripcion  === '' || descripcion === null){
+        alert('Debe dar una descripcion de la prenda');
+        return false;
+    }
+    let color = document.getElementById('color').value;
+    if(color === '' || color === null){
+        alert('Debe ingresar al menos un color en las prendas');
+        return false;
+    }
+    let prod_id = document.getElementById('hidden_id');
+    let ajax = new XMLHttpRequest();
+    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let params = 'metodo=actualizar&nombre_img='+data+'&precio='+precio+'&iva='+iva+'&stock='+stock+'&talla='+talla
+        +'&nombre='+nombre+'&descripcion='+descripcion+'&color='+color+'&prod_id='+prod_id;
+
+    ajax.open('POST', url, true);
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajax.onreadystatechange = function () {
+        if(ajax.readyState === 4 && ajax.status === 200){
+            alert(this.responseText);
+            if(ajax.responseText === 1){
+                alert('Se ha ingresado el producto correctamente.');
+            }else{
+                alert('Ha ocurrido un error al momento del ingreso.');
+            }
+        }
+    };
+    ajax.send(params);
+    return false;
 }
 
 function eliminar(){
@@ -134,5 +252,21 @@ function mostrarProducto(){
 }
 
 function buscar() {
-
+    let ajax = new XMLHttpRequest();
+    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let elemento = document.getElementById('tablita');
+    if(elemento!=null){
+        elemento.parentNode.removeChild(elemento);
+    }
+    let valor = document.getElementById('txt_buscar').value;
+    let params = 'metodo=buscar&valor='+valor;
+    ajax.open('POST', url, true);
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajax.onreadystatechange = function () {
+        if(this.readyState === 4 && this.status === 200){
+            document.getElementById('tablaProductos').innerHTML=this.responseText;
+        }
+    };
+    ajax.send(params);
+    return false;
 }
