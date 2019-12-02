@@ -227,8 +227,20 @@ function updateProducto(data, state_img){
     return false;
 }
 
-function eliminar(){
-
+function eliminar(param){
+    let id = param.id;
+    let ajax = new XMLHttpRequest();
+    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let params = 'metodo=borrar&id='+id;
+    ajax.open('POST', url, true);
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ajax.onreadystatechange = function () {
+        if(this.readyState === 4 && this.status === 200){
+            alert(this.responseText);
+        }
+    };
+    ajax.send(params);
+    return false;
 }
 
 function mostrarProducto(){

@@ -83,7 +83,7 @@ function insertar(){
 function listar(){
     global $conn;
     $sql = "select producto_id, producto_precio, producto_iva, producto_stock, producto_talla, producto_nombre, producto_color,
-       producto_descripcion from producto";
+       producto_descripcion from producto where producto_eliminado = 'N'";
     $resultado = $conn->query($sql);
     if($resultado->num_rows > 0){
         echo "<table id='tablita'>";
@@ -139,14 +139,22 @@ function actualizar(){
 }
 
 function borrar(){
-
+    global $conn;
+    $prod_id = $_POST['id'];
+    $sql = "update producto set producto_eliminado = 'S' where producto_id='$prod_id'";
+    if($conn->query($sql) === TRUE){
+        echo 1;
+    }else{
+        echo 2;
+    }
+    $conn->close();
 }
 
 function buscar(){
     global  $conn;
     $buscar = $_POST['valor'];
     $sql = "select producto_id, producto_precio, producto_iva, producto_stock, producto_talla, producto_nombre, producto_color,
-       producto_descripcion from producto where producto_nombre like '%" . $buscar . "%'";
+       producto_descripcion from producto where producto_nombre like '%" . $buscar . "%' and producto_eliminado = 'N'";
 
     $resultado = $conn->query($sql);
     if($resultado->num_rows >0){
