@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../../config/conexionBD.php';
 
 if($_POST['metodo'] === 'imagen'){
