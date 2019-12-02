@@ -3,7 +3,7 @@ include '../../../config/conexionBD.php';
 
 if($_POST['metodo'] === 'imagen'){
     $leo = $_FILES['file']['name'];
-    $dir_subida = '/Integrador/imgs/';
+    $dir_subida = '/Bellisima/imgs/';
     $fichero_subido =$dir_subida . basename($_FILES['file']['name']);
 
     $sql = 'select max(producto_id) as maximo from producto';
@@ -13,16 +13,16 @@ if($_POST['metodo'] === 'imagen'){
         $valor_maximo = $row['maximo'] + 1;
     }
     $conn->close();
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Integrador/imgs/private/'.$valor_maximo.'.jpg')) {
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Bellisima/imgs/private/'.$valor_maximo.'.jpg')) {
         echo $valor_maximo.'.jpg';
     }
 }else if($_POST['metodo'] === 'updateImg'){
     $id = $_POST['prod_id'];
     $leo = $_FILES['file']['name'];
-    $dir_subida = '/Integrador/imgs/';
+    $dir_subida = '/Bellisima/imgs/';
     $fichero_subido = $dir_subida . basename($_FILES['file']['name']);
 
-    if(move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Integrador/imgs/private/'.$id.'.jpg')){
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Bellisima/imgs/private/'.$id.'.jpg')){
         echo $id;
     }
 }

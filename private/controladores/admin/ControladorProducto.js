@@ -19,7 +19,7 @@ function guardarPishure(){
     formData.append('metodo', 'imagen');
     $.ajax({
         type: "POST",
-        url: '/Integrador/private/controladores/admin/Controlador_Producto.php',
+        url: '/Bellisima/private/controladores/admin/Controlador_Producto.php',
         data: formData,
         processData: false,
         contentType: false,
@@ -80,7 +80,7 @@ function insertar(data){
     }
 
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=insertar&nombre_img='+data+'&precio='+precio+'&iva='+iva+'&stock='+stock+'&talla='+talla
         +'&nombre='+nombre+'&descripcion='+descripcion+'&color='+color;
     
@@ -111,7 +111,7 @@ function abrirParaModificar(param){
 
 function cargarParaEditar(id){
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=editar&id='+id;
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -147,7 +147,7 @@ function actualizar(){
         formData.append('prod_id', leu);
         $.ajax({
             type: "POST",
-            url: '/Integrador/private/controladores/admin/Controlador_Producto.php',
+            url: '/Bellisima/private/controladores/admin/Controlador_Producto.php',
             data: formData,
             processData: false,
             contentType: false,
@@ -208,7 +208,7 @@ function updateProducto(data, state_img){
     }
     let prod_id = document.getElementById('hidden_id').value;
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=actualizar&nombre_img='+data+'&precio='+precio+'&iva='+iva+'&stock='+stock+'&talla='+talla
         +'&nombre='+nombre+'&descripcion='+descripcion+'&color='+color+'&='+prod_id+'&=check_img='+state_img;
     ajax.open('POST', url, true);
@@ -230,7 +230,7 @@ function updateProducto(data, state_img){
 function eliminar(param){
     let id = param.id;
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=borrar&id='+id;
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -245,7 +245,7 @@ function eliminar(param){
 
 function mostrarProducto(){
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=listarProductos';
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -260,7 +260,7 @@ function mostrarProducto(){
 
 function buscar() {
     let ajax = new XMLHttpRequest();
-    let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
+    let url = '/Bellisima/private/controladores/admin/Controlador_Producto.php';
     let elemento = document.getElementById('tablita');
     if(elemento!=null){
         elemento.parentNode.removeChild(elemento);
