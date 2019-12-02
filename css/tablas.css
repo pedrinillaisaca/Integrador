@@ -1,0 +1,92 @@
+.tabla {
+    border: 1px solid;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla td {
+    border: 1px solid;
+    text-align: center;
+}
+
+.tabla th {
+    border: 1px solid;
+    text-align: center;
+}
+
+#siteloader {
+    height: 500px;
+    width: 100%;
+    border-color: black;
+}
+
+#mapa {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    border-color: black;
+}
+
+/*
+* {
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+	margin: 2px;
+}*/
+
+.tabla {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #45454d;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #282828;
+    color: white;
+}
+
+button {
+    border-radius: 5px;
+}
+
+#elm:hover {
+    color: red;
+}
+
+label {
+    margin-left: auto;
+}
+
+.tabla {
+    width: 70%;
+    height: 70%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+body{
+    background-color: #535b57;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #cf914e;
+    margin: 20px 0 20px 0 ;
+}
