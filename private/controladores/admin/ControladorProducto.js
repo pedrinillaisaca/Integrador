@@ -122,19 +122,13 @@ function cargarParaEditar(id){
             document.getElementById('precio').value = spliteo[1];
             document.getElementById('iva').value = spliteo[2];
             document.getElementById('stock').value = spliteo[3];
-
             let spliteoTalla = spliteo[4].split(',');
-
             if(spliteoTalla[0] ==='S') document.getElementById('small').checked = true;
-
             if(spliteoTalla[1] ==='M') document.getElementById('medium').checked = true;
-
             if(spliteoTalla[2] ==='L') document.getElementById('large').checked = true;
-
             document.getElementById('nombre').value = spliteo[5];
             document.getElementById('descripcion').value = spliteo[7];
             document.getElementById('color').value = spliteo[6];
-
         }
     };
     ajax.send(params);
@@ -146,24 +140,27 @@ function abrirModificar(origen){
 }
 
 function actualizar(){
-    formData = new FormData($('#formulario')[0]);
-    formData.append('metodo', 'imagen');
-    $.ajax({
-        type: "POST",
-        url: '/Integrador/private/controladores/admin/Controlador_Producto.php',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (data) {
-            alert(data);
-            updateProducto(data);
-        }
-    });
-
-
+    if(document.getElementById('abrir_img').getAttribute('src') !== ""){
+        formData = new FormData($('#formulario')[0]);
+        formData.append('metodo', 'updateImg');
+        let leu = document.getElementById('hidden_id').value;
+        formData.append('prod_id', leu);
+        $.ajax({
+            type: "POST",
+            url: '/Integrador/private/controladores/admin/Controlador_Producto.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                updateProducto(data, true);
+            }
+        });
+    }else{
+        updateProducto(document.getElementById('hidden_id').value, false);
+    }
 }
 
-function updateProducto(data){
+function updateProducto(data, state_img){
     let precio = document.getElementById('precio').value;
     if(precio <= 0){
         alert('El precio debe ser mayor que cero');
@@ -179,7 +176,6 @@ function updateProducto(data){
         alert('El valor del Stock debe ser mayor o igual que cero');
         return false;
     }
-    // REVISAR SI SMALL / MEDIUM / LARGE ESTA SELECTED
     let talla;
     if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
         && document.getElementById('large').checked === true)
@@ -214,18 +210,16 @@ function updateProducto(data){
     let ajax = new XMLHttpRequest();
     let url = '/Integrador/private/controladores/admin/Controlador_Producto.php';
     let params = 'metodo=actualizar&nombre_img='+data+'&precio='+precio+'&iva='+iva+'&stock='+stock+'&talla='+talla
-        +'&nombre='+nombre+'&descripcion='+descripcion+'&color='+color+'&prod_id='+prod_id;
-
+        +'&nombre='+nombre+'&descripcion='+descripcion+'&color='+color+'&='+prod_id+'&=check_img='+state_img;
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajax.onreadystatechange = function () {
         if(ajax.readyState === 4 && ajax.status === 200){
-            alert(this.responseText);
-            if(ajax.responseText === 1){
-                alert('Se ha ingresado el producto correctamente.');
+            alert(this.responseText + '<---');
+            if(this.responseText === 1){
+                alert('Se ha actualizado el producto correctamente.');
             }else{
-                alert('Ha ocurrido un error al momento del ingreso.');
-                alert(this.responseText);
+                alert('No se ha podido actualizar el producto.');
             }
         }
     };

@@ -16,10 +16,18 @@ if($_POST['metodo'] === 'imagen'){
     if (move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Integrador/imgs/private/'.$valor_maximo.'.jpg')) {
         echo $valor_maximo.'.jpg';
     }
+}else if($_POST['metodo'] === 'updateImg'){
+    $id = $_POST['prod_id'];
+    $leo = $_FILES['file']['name'];
+    $dir_subida = '/Integrador/imgs/';
+    $fichero_subido = $dir_subida . basename($_FILES['file']['name']);
+
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/Integrador/imgs/private/'.$id.'.jpg')){
+        echo $id;
+    }
 }
 
 if($_POST['metodo'] === 'insertar'){
-
     insertar();
 }else if($_POST['metodo'] === 'listarProductos') {
     listar();
@@ -117,15 +125,15 @@ function actualizar(){
     $talla  = $_POST['talla'];
     $nombre  = $_POST['nombre'];
     $color  = $_POST['color'];
-    $prod_id = $_POST['prod_id'];
+    $prod_id = $nombre_img;
+    $nombre_img = $nombre_img . '.jpg';
     $descripcion  = $_POST['descripcion'];
     $sql = "update producto set producto_img='$nombre_img', producto_precio='$precio', producto_iva='$iva', producto_stock='$stock',
                 producto_talla='$talla', producto_nombre='$nombre', producto_color='$color', producto_descripcion='$descripcion' where producto_id='$prod_id'";
-    echo $sql;
     if($conn->query($sql)== TRUE){
         echo 1;
     }else{
-        echo $conn->error;
+        echo 2;
     }
     $conn->close();
 }
@@ -170,9 +178,5 @@ function buscar(){
         echo "</table>";
     }
     $conn->close();
-}
-
-function crearTabla($result){
-
 }
 ?>
