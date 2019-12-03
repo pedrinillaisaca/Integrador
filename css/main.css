@@ -2310,8 +2310,10 @@
 /* Gallery */
 
 	.gallery {
-		width: 100%;
-		margin: 0;
+		width: 80%;
+
+		margin-left: 10%;
+
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;

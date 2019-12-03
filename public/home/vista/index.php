@@ -45,7 +45,17 @@ include("../../../config/conexionBD.php"); //include config file
                         <li><a id = 'mod' href="login.html">Modificar datos</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Page 2</a></li>
+
+                <li class="active"><a id="a_nombre" href="#">Nosotros</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span
+                                class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id = 'who' href="quienes_somos.html">Quienes somos?</a></li>
+                        <li><a id = 'mision' href="mision_vision.html">Mision y Vision</a></li>
+                        <li><a id = 'contacto' href="contactenos.html">Contactenos</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="crear_usuario.html"><span class="glyphicon glyphicon-user"></span>Registrate</a></li>

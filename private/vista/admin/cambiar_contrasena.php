@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Cambiar contrasena</title>
     <script type="text/javascript" src="../../controladores/admin/metodos.js"></script>
+    <link rel="stylesheet" href="../../../css/cambiar_password.css">
 </head>
 <body>
 <?php
@@ -14,7 +15,8 @@ if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
 $codigo = $_GET["codigo"];
 ?>
 <form id="formulario01" method="POST" onsubmit="return cambiar_contrasena()" action="">
-
+    <img id="fondo" src="../../../imgs/private/form.png"/>
+    <h3>-----Cambiar contrsena-----</h3>
     <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>" />
     <label for="cedula">Contraseña Actual (*)</label>
     <input type="password" id="contrasena1" name="contrasena1" value="" required
@@ -26,8 +28,7 @@ $codigo = $_GET["codigo"];
     <br>
 
     <input type="submit" id="modificar" name="modificar" value="Modificar" onclick="return cambiar_contrasena()" />
-    <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+    <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="window.open('../../../public/home/vista/index.php')"/>
 </form>
-<div id="informacion"><b>Datos de la persona</b></div>
 </body>
 </html>

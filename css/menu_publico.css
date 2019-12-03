@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 1.1px;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: center;
+
+    max-width: 720px;
+    margin: 0 auto;
+    height: 100px;
+    list-style: none;
+}
+
+.menu li {
+    width: 125px;
+    height: 50px;
+    transition: background-position-x 0.9s linear;
+    text-align: center;
+}
+
+a {
+    font-size: 22px;
+    color: #777;
+    text-decoration: none;
+    transition: all 0.45s;
+}
+
+
+

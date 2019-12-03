@@ -39,7 +39,8 @@
                     <li><a href="#">Page 1-3</a></li>
                 </ul>
             </li>
-            <li><a href="#">Gestion productos</a></li>
+            <li><a href="Producto.html">Gestion productos</a></li>
+            <li><a href="gestionPedidos.html">Gestion pedidos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="crear_usuario.html"><span class="glyphicon glyphicon-user"></span >Registrate</a></li>
@@ -67,7 +68,7 @@
         header("Location: ../../../public/home/vista/login.html");
     }
     include '../../../config/conexionBD.php';
-    $sql = "SELECT * FROM persona";
+    $sql = "SELECT * FROM persona where per_eliminado="."'N' ";
     $result = $conn->query($sql);
     $_SESSION['correo']=$_GET['correo'] ;
     $_SESSION['contrasena']=$_GET['contrasena'];
