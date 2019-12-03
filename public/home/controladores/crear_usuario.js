@@ -6,10 +6,12 @@ function crearUsuario() {
 	let telefono  =document.getElementById("telefono").value;
 	let correo = document.getElementById("correo").value;
 	let password = document.getElementById("password").value;
+	let latitud = document.getElementById('latitud').value;
+	let longitud = document.getElementById('longitud').value;
 	let http = new XMLHttpRequest();
     let url = '/Bellisima/public/home/controladores/crear_usuario.php';
     let params = 'nombre='+nombre+'&apellido='+apellido+'&direccion='+direccion+'&telefono='+telefono+'&correo='+correo+
-        '&password='+password;
+        '&password='+password+'&latitud='+latitud+'&longitud='+longitud;
 	
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -74,5 +76,17 @@ function soloNumeros(e) {
     var key = window.Event ? e.which : e.keyCode
     return ((key >= 48 && key <= 57) || (key==8))
 }
-	
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        document.getElementById('latitud').innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    alert('scorpion');
+    document.getElementById('latitud').innerHTML = position.coords.latitude.toString();
+    document.getElementById('longitud').innerHTML=position.coords.longitude.toString();
+}
