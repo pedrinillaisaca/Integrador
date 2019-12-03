@@ -8,7 +8,7 @@ include '../../../config/conexionBD.php';
  $contrasena = $_POST['password'];
  $latitud = $_POST['latitud'];
  $longitud = $_POST['longitud'];
- $sql = "INSERT INTO persona VALUES (0,'U','N', '$nombres', '$apellidos', '$direccion', '$telefono','$correo', MD5('$contrasena'),now(),NULL,'$longitud','$latitud')";
+ $sql = "INSERT INTO persona VALUES (0,'U','N', '$nombres', '$apellidos', '$direccion', '$telefono','$correo', MD5('$contrasena'),now(),NULL,'$latitud','$longitud')";
  if ($conn->query($sql) === TRUE) {
  echo "Se ha creado los datos personales correctamemte!!!";
 

@@ -8,6 +8,7 @@ function crearUsuario() {
 	let password = document.getElementById("password").value;
 	let latitud = document.getElementById('latitud').value;
 	let longitud = document.getElementById('longitud').value;
+	alert(longitud);
 	let http = new XMLHttpRequest();
     let url = '/Bellisima/public/home/controladores/crear_usuario.php';
     let params = 'nombre='+nombre+'&apellido='+apellido+'&direccion='+direccion+'&telefono='+telefono+'&correo='+correo+
@@ -87,6 +88,6 @@ function getLocation() {
 
 function showPosition(position) {
     alert('scorpion');
-    document.getElementById('latitud').innerHTML = position.coords.latitude.toString();
-    document.getElementById('longitud').innerHTML=position.coords.longitude.toString();
+    document.getElementById('latitud').value = position.coords.latitude.toString();
+    document.getElementById('longitud').value =position.coords.longitude.toString();
 }
