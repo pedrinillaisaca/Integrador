@@ -3,26 +3,14 @@
 /**
  *  <input type='button' id='boton2' name='boton2' value='Trazar Ruta' onclick='trazarRutaMapa(".$row['per_longitud'].",".$row['per_latitud'].")'>
  */
-$indicador=$_GET['indicador'];
-$parametro=$_GET['parametro'];
+
 include '../../../config/conexionBD.php';
 
 
-$sql="";
-
-if ('fechaPed'==$indicador) {
     $sql= "SELECT * FROM pedido,(SELECT factura_cabecera.factura_id AS fac_cab, CONCAT (per.per_nombre , ' ',  per.per_apellido) AS nombres,  per.per_longitud, per.per_latitud , per.per_email AS correo
     FROM persona per, factura_cabecera WHERE factura_cabecera.fk_persona_factura = per.per_id) AS leo 
-    WHERE pedido.fk_pedido_factura = leo.fac_cab AND pedido_fecha='$parametro';";
+    WHERE pedido.fk_pedido_factura = leo.fac_cab ;";
     
-}
-if ('correoPed'==$indicador) {
-    $sql= "SELECT * FROM pedido,(SELECT factura_cabecera.factura_id AS fac_cab, CONCAT (per.per_nombre , ' ',  per.per_apellido) AS nombres,  per.per_longitud, per.per_latitud , per.per_email AS correo
-    FROM persona per, factura_cabecera WHERE factura_cabecera.fk_persona_factura = per.per_id) AS leo 
-    WHERE pedido.fk_pedido_factura = leo.fac_cab  AND correo='$parametro';";
-}
-
-
 $result = $conn->query($sql);
 
 

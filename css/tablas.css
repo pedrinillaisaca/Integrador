@@ -14,11 +14,6 @@
     text-align: center;
 }
 
-#siteloader {
-    height: 500px;
-    width: 100%;
-    border-color: black;
-}
 
 #mapa {
     height: 100%;
@@ -27,13 +22,6 @@
     border-color: black;
 }
 
-/*
-* {
-	border-width: 1px;
-	border-color: red;
-	border-style: solid;
-	margin: 2px;
-}*/
 
 .tabla {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -89,4 +77,26 @@ body{
     text-align: center;
     color: #cf914e;
     margin: 20px 0 20px 0 ;
+}
+
+
+#opciones_de_factura{   
+    display: none;
+    float: left;    
+    border-color: black;
+    
+   
+}
+
+
+#opciones{
+    
+    float: left;
+}
+
+*{
+	border-width: 1px;
+	border-color: red;
+	border-style: solid;
+	margin: 2px;
 }
