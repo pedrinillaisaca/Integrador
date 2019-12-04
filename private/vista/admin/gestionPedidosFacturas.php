@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+    header("Location: ../../../public/home/vista/login.html");
+}
+$codigo = $_GET["codigo"];
+?>
 <!DOCTYPE html>
 <html>
 
