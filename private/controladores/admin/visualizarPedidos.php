@@ -53,8 +53,6 @@ if ($result->num_rows > 0) {
         echo "   <td>" . $row['correo'] . "</td>";
         echo "   <td style='display:none;'>" . $row['per_longitud'] . "</td>";
         echo "   <td style='display:none;'>" . $row['per_latitud'] . "</td>";
-                        
-        //echo "   <td> <a href='../../controladores/user/reg_re_usu.php?u_codigo=".$row['u_codigo']."&r_codigo=".$codigo_reunion."'>Invitar</a> </td>"; //?r_codigo=".$codigo_reunion." 
         echo "<td> 
         <select  required name='estado' id='estado".$row["pedido_id"]."' >
         <option value=''>Cambiar de Estado</option>
@@ -66,9 +64,7 @@ if ($result->num_rows > 0) {
         </select>
         
         <input type='button' id='boton' name='boton' value='Cambiar' onclick='cambiarEstado(".$row['pedido_id'].")'>
-       
-        <a href='../../controladores/admin/maps/examples/index.php?lon=".$row['per_longitud']."&lat=".$row['per_latitud']."'> Trazar Ruta</a>
-        
+        <input type='button' id='prueba' name='prueba' value='Trazar Ruta' onclick='printMapa(".$row['per_longitud'].",".$row['per_latitud'].")'>                
         </td>";
         echo "</tr>";
         

@@ -51,12 +51,9 @@ if ($result->num_rows > 0) {
         <option value='E'>E = En camino</option>
         <option value='F'>F = Finalizado</option>
         <option value='R'>R = Rechazado</option>
-        </select>
-        
+        </select>        
         <input type='button' id='boton' name='boton' value='Cambiar' onclick='cambiarEstado(".$row['pedido_id'].")'>
-       
-        <a href='../../controladores/admin/maps/examples/index.php?lon=".$row['per_longitud']."&lat=".$row['per_latitud']."'> Trazar Ruta</a>
-        
+        <input type='button' id='prueba' name='prueba' value='Trazar Ruta' onclick='printMapa(".$row['per_longitud'].",".$row['per_latitud'].")'>        
         </td>";
         echo "</tr>";
         

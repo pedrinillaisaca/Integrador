@@ -191,7 +191,6 @@ function verFacturaCompleta(id){
 
 
 }
-
 function mostCorreoPed(){
     document.getElementById("correoPed").style.display='block';
     document.getElementById("fechaPed").style.display='none';
@@ -199,4 +198,28 @@ function mostCorreoPed(){
 function mostFechaPed(){
     document.getElementById("correoPed").style.display='none';
     document.getElementById("fechaPed").style.display='block';
+}
+
+
+function printMapa(lon,lat){    
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            //alert("llegue"); 
+            document.getElementById("divDinamico").innerHTML = this.responseText;
+        }
+    };       
+
+    console.log("print mapa")
+    console.log(lon)
+    console.log(lat)
+    let url ="../../controladores/admin/mapita.php?lon="+lon+"&lat="+lat;
+   
+        
+    xmlhttp.open("GET", url, true);
+
+    xmlhttp.send();
+
+    return false;
+
+
 }
