@@ -21,10 +21,10 @@
     <div id="opciones">
         <select required name="visualizar" id="visualizar">
             <option value="">Buscar Pedidos:</option>
-            <option onclick="mostTodosPed()"value="todosPedidos">Visualizar Todos Pedidos</option>
-            <option onclick="mostFechaPed()" value="fechaPed">Visualizar por Fecha</option>
-            <option onclick="mostCorreoPed()" value="correoPed">Visualizar por Correo del titular</option>
-            <option onclick="mostrar()" value="Visualizar Facturas">Visualizar Facturas</option>
+            <option onclick="mostTodosPed()"value="todosPedidos">Listar todos los Pedidos</option>
+            <option onclick="mostFechaPed()" value="fechaPed">Buscar Pedido por Fecha</option>
+            <option onclick="mostCorreoPed()" value="correoPed">Buscar Pedido Correo del titular</option>
+            <option onclick="mostrar()" value="Visualizar Facturas">Buscar Facturas</option>
             <option value="Limpiar">Limpiar</option>
         </select>
         <input type="date" id="fechaPed" name="fechaPed" style="display: none;">
