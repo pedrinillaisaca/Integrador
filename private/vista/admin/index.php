@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1 class="icono">&nbsp&nbsp&nbsp&nbsp&nbspGestion de usuarios</h1>
-<input type="button" value="Cerrar Sesion"id="cerrar" onclick="window.open('../../../public/home/vista/index.html')" />
+<input type="button" value="Cerrar Sesion"id="cerrar" onclick="window.open('../../../public/home/vista/index.php')" />
 <table style="width:100%">
     <tr>
         <th>Rol</th>

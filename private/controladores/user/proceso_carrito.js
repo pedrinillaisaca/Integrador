@@ -1,56 +1,126 @@
 
-	/*, aunque haya elementos que no hayan sido cargados del */
-	function AgrregarCarrito(){
+
+function AgregarCarrito(id){
+	var cantidad = document.getElementById("cantidad");
+	var selectedcantidad = cantidad.options[cantidad.selectedIndex].text;
+	alert(selectedcantidad);
+
+	var codigo_user=document.getElementById("codigo_usuario").value;
+	var producto_id=document.getElementById(id).value;
+	var cantidad = document.getElementById("cantidad").value;
+	alert(cantidad);
+
+	/* Para obtener el texto */
+	alert('usu' +codigo_user)
+	alert('este es el codigo producto'+ producto_id);
+	if (producto_id===0  ) {
+		document.getElementById("cart-info").innerHTML = "0";
+	} else {
+		///ajax llamada a ajax//
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.onreadystatechange = function() {
+			var l=this.responseText;
+			if (this.readyState === 4 && this.status === 200) {
+				alert('Leo' +l);
+				if (l == 0){
+					alert(l);
+					window.location='login.html';
+				}else{if (l==1)
+					alert('logeado');
+					console.log(this.responseText);
+					alert(this.responseText);
+					document.getElementById("cart-info").innerHTML = this.responseText;
+				}
+
+
+
+			}
+		};
+		xmlhttp.open("GET"," ../../../private/controladores/user/proceso_carrito_compra.php?codigo_producto=" + producto_id+"&codigo_usuario="+codigo_user +"&cantidad="+cantidad,true);
+		xmlhttp.send();
 
 	}
-$(document).ready(function(){	
-	/* sirve para hacer cosas cuando la página está lista para recibir instrucciones jQuery que modifiquen el DOM. */
-		$(".form-item").submit(function(e){
-			var form_data = $(this).serialize();
-			var button_content = $(this).find('button[type=submit]');
-			button_content.html('Añadiendo'); //Cargando texto del botón
+	return false;
+}
+function eliminar(idper,cant,iddetcarr,pro_id) {
 
-			$.ajax({ //hacer una solicitud ajax a proceso_carrito_compra.php
-				url: "proceso_carrito_compra.php",
-				type: "POST",
-				dataType:"json", //esperar valor json del servidor
-				data: form_data
-			}).done(function(data){ //éxito de Ajax
-				$("#cart-info").html(data.items); //artículos totales en el elemento de información del carrito
-				button_content.html('Agregar Carrito'); //restablecer el texto del botón al texto original
-				alert("A añadido al carrito de compras!"); //alert user
-				if($(".shopping-cart-box").css("display") === "block"){ //si la caja del carrito sigue visible
-					$(".cart-box").trigger( "click" ); //disparador haga clic para actualizar la caja del carrito.
-				}
-			})
-			/* el link no lleve a
-ningún sitio, simplemente se ejecutará el código Javascript contenido para el evento*/
-			e.preventDefault();
-		});
+	var id_per=document.getElementById(idper).value;
+	alert('usuario'+ id_per);
 
-	//Mostrar artículos en el carrito
-	$( ".cart-box").click(function(e) { //cuando el usuario hace clic en la caja del carrito
-		e.preventDefault(); 
-		$(".shopping-cart-box").fadeIn(); //exhibir la caja del carro
-		$("#shopping-cart-results").html('<img src="../../../imgs/public/ajax-loader.gif">'); //mostrar imagen de carga
-		$("#shopping-cart-results" ).load( "proceso_carrito_compra.php", {"load_cart":"1"}); //Haga una solicitud ajax usando jQuery Load () y actualice los resultados
-	});
-	
-	//Close Cart
-	$( ".close-shopping-cart-box").click(function(e){ //usuario haga clic en la caja del carrito cerrar enlace
-		e.preventDefault(); 
-		$(".shopping-cart-box").fadeOut(); //close cart-box
-	});
-	
-	//Eliminar artículos del carrito
-	$("#shopping-cart-results").on('click', 'a.remove-item', function(e) {
-		e.preventDefault(); 
-		var pcode = $(this).attr("data-code"); //obtener el código del producto
-		$(this).parent().fadeOut(); //eliminar elemento del elemento de la caja
-		$.getJSON( "proceso_carrito_compra.php", {"remove_code":pcode} , function(data){ //obtener el recuento de elementos del servidor
-			$("#cart-info").html(data.items); //actualizar el recuento de artículos en el carrito
-			$(".cart-box").trigger( "click" ); //haga clic en la caja del carrito para actualizar la lista de artículos
-		});
-	});
+	var Cantidad=document.getElementById(cant).value;
+	alert('cantidad'+ Cantidad);
 
-});
+	var id_detalle=document.getElementById(iddetcarr).value;
+	alert('iddetalle'+ id_detalle);
+
+	var id_producto=document.getElementById(pro_id).value;
+	alert('producto'+ id_producto);
+
+	if (id_producto===0  ) {
+		document.getElementById("cart-info").innerHTML = "0";
+	} else {
+		///ajax llamada a ajax//
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.onreadystatechange = function() {
+			var l=this.responseText;
+			if (this.readyState === 4 && this.status === 200) {
+
+					document.getElementById("informacion").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET"," ../../../private/controladores/user/eliminarcarrito.php?codigo_detalle=" + id_detalle+"&codigo_usuario="+id_per+"&cantidad="+Cantidad+"&codigo_producto="+id_producto,true); /*+"&codigo_usuario="+codigo_user +"&cantidad="+cantidad*/
+		xmlhttp.send();
+
+	}
+	return false;
+
+}
+function capturar(idper,iddetcarr,pro_id){
+	var id_per=document.getElementById(idper).value;
+	alert('usuario'+ id_per);
+
+	var id_detalle=document.getElementById(iddetcarr).value;
+	alert('iddetalle'+ id_detalle);
+
+	var id_producto=document.getElementById(pro_id).value;
+	alert('producto'+ id_producto);
+
+		var x=document.getElementsByTagName("td");
+		Cantidad=x[1].innerHTML;
+		alert ('desea modificar la cantidad de prendas a :'+ Cantidad);
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {
+			// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.onreadystatechange = function() {
+			var l=this.responseText;
+			if (this.readyState === 4 && this.status === 200) {
+
+				document.getElementById("informacion").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET"," ../../../private/controladores/user/modificarcarrito.php?codigo_detalle=" + id_detalle+"&codigo_usuario="+id_per+"&cantidad="+Cantidad+"&codigo_producto="+id_producto,true); /*+"&codigo_usuario="+codigo_user +"&cantidad="+cantidad*/
+		xmlhttp.send();
+
+
+}
+
+

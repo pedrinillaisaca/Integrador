@@ -1,17 +1,21 @@
 <?php
 session_start(); //start session
 include("../../../config/conexionBD.php"); //include config file
+
+$codigo_user = $_GET["codigo"];
+
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../../../css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Bellisima</title>
     <link rel="stylesheet" href="../../../css/estilo_carrito.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="../../../private/controladores/user/proceso_carrito.js"></script>
 </head>
 <body>
 <header>
@@ -34,11 +38,13 @@ include("../../../config/conexionBD.php"); //include config file
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="crear_usuario.html"><span class="glyphicon glyphicon-user"></span>Registrate</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion </a></li>
+                <li><a href="../../../private/controladores/user/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesion</a></li>
+
 
             </ul>
         </div>
-        <a href="#" class="cart-box" id="cart-info" title="visualizar_carrito">
+        <a href="../../../private/vista/user/visualizar_carrito.php" class="cart-box" id="cart-info" title="visualizar_carrito">
             <?php
             if (isset($_SESSION["products"])) {
                 echo count($_SESSION["products"]);
@@ -49,7 +55,7 @@ include("../../../config/conexionBD.php"); //include config file
         </a>
         <div class="shopping-cart-box">
             <a href="#" class="close-shopping-cart-box">Close</a>
-            <h3>SUS COMPRAS DEL CARRITO</h3>
+            <h3>SU COMPRAS DEL CARRITO</h3>
             <div id="shopping-cart-results">
             </div>
         </div>
@@ -127,50 +133,19 @@ include("../../../config/conexionBD.php"); //include config file
             while ($row = $results->fetch_assoc()) {
                 $products_list .= <<<EOT
 <li>
-<form class="form-item" method="post" onsubmit="return AgregarCarrito()">
+<form class="form-item" method="post" > 
 <h4>{$row["producto_nombre"]}</h4>
-<div><img src="../../../imgs/public/{$row["producto_img"]}"></div>
+<div><img src="../../../imgs/private/{$row["producto_img"]}" href="../../../private/vista/user/ver_descripcion.php?id_producto={$row["producto_id"]}" alt=""></div>
 <div>Precio : {$moneda} {$row["producto_precio"]}<div>
 <div class="item-box">
     <div>
-	Color :
-    <select name="producto_color">
-    <option value="Rojo">Rojo</option>
-    <option value="Azul">Azul</option>
-    <option value="blanco">Blanco</option>
-    <option value="negro">Negro</option>
-    
-    </select>
-	</div>
 	
-	<div>
-    Cantidad :
-    <select name="producto_cantidad">
-    <option value="1">1</option>b
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    </select>
-	</div>
-	
-	<div>
-    Talla :
-    <select name="producto_talla">
-	<option value="S">M</option>
-    <option value="M">XL</option>
-    <option value="L">XLL</option>
-    </select>
-	</div>
-	
-    <input name="producto_id" id="producto_codigo" type="hidden" value="{$row["producto_id"]}">
-    
-    <button type="button" id="agregar" value="" onclick="AgregarCarrito()">agregar Carrito</button>
-    
+   <p> <a href='visualizar_producto.php?codigo_producto={$row["producto_id"]}&codigo_usuario=$codigo_user'>ver descripciones</a><span class='fontawesome-arrow-right'></span></p>
+	<button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" href="visualizar_producto.php?codigo_producto={$row["producto_id"]}&codigo_usuario=$codigo_user" >+</button>  
     <a class="fontawesome-twitter" href="#"></a>
     <a class="fontawesome-thumbs-up" href="#"></a>
     <a class="fontawesome-thumbs-down" href="#"></a>
-    <i class="fas fa-camera-retro fa-10x"></i>
+    
     
     
     
@@ -182,6 +157,7 @@ EOT;
             $products_list .= '</ul></div>';
 
             echo $products_list;
+            $conn->close();
             ?>
     </section>
 
