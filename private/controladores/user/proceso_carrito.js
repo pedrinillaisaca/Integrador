@@ -3,16 +3,15 @@
 function AgregarCarrito(id){
 	var cantidad = document.getElementById("cantidad");
 	var selectedcantidad = cantidad.options[cantidad.selectedIndex].text;
-	alert(selectedcantidad);
+
 
 	var codigo_user=document.getElementById("codigo_usuario").value;
 	var producto_id=document.getElementById(id).value;
 	var cantidad = document.getElementById("cantidad").value;
-	alert(cantidad);
+
 
 	/* Para obtener el texto */
-	alert('usu' +codigo_user)
-	alert('este es el codigo producto'+ producto_id);
+
 	if (producto_id===0  ) {
 		document.getElementById("cart-info").innerHTML = "0";
 	} else {
@@ -28,14 +27,14 @@ function AgregarCarrito(id){
 		xmlhttp.onreadystatechange = function() {
 			var l=this.responseText;
 			if (this.readyState === 4 && this.status === 200) {
-				alert('Leo' +l);
+				//alert('Leo' +l);
 				if (l == 0){
-					alert(l);
+					//alert(l);
 					window.location='login.html';
-				}else{if (l==1)
-					alert('logeado');
+				}else{if (!l==0)
+					//alert('logeado');
 					console.log(this.responseText);
-					alert(this.responseText);
+					//alert(this.responseText);
 					document.getElementById("cart-info").innerHTML = this.responseText;
 				}
 
@@ -52,16 +51,16 @@ function AgregarCarrito(id){
 function eliminar(idper,cant,iddetcarr,pro_id) {
 
 	var id_per=document.getElementById(idper).value;
-	alert('usuario'+ id_per);
+	//alert('usuario'+ id_per);
 
 	var Cantidad=document.getElementById(cant).value;
-	alert('cantidad'+ Cantidad);
+	//alert('cantidad'+ Cantidad);
 
 	var id_detalle=document.getElementById(iddetcarr).value;
-	alert('iddetalle'+ id_detalle);
+	//alert('iddetalle'+ id_detalle);
 
 	var id_producto=document.getElementById(pro_id).value;
-	alert('producto'+ id_producto);
+	//alert('producto'+ id_producto);
 
 	if (id_producto===0  ) {
 		document.getElementById("cart-info").innerHTML = "0";
@@ -91,13 +90,13 @@ function eliminar(idper,cant,iddetcarr,pro_id) {
 }
 function capturar(idper,iddetcarr,pro_id){
 	var id_per=document.getElementById(idper).value;
-	alert('usuario'+ id_per);
+	//alert('usuario'+ id_per);
 
 	var id_detalle=document.getElementById(iddetcarr).value;
-	alert('iddetalle'+ id_detalle);
+	//alert('iddetalle'+ id_detalle);
 
 	var id_producto=document.getElementById(pro_id).value;
-	alert('producto'+ id_producto);
+	//alert('producto'+ id_producto);
 
 		var x=document.getElementsByTagName("td");
 		Cantidad=x[1].innerHTML;
@@ -121,6 +120,16 @@ function capturar(idper,iddetcarr,pro_id){
 		xmlhttp.send();
 
 
+}
+function comprar(idpersona,idcarritodetalle,idproducto) {
+	var id_per=document.getElementById(idpersona).value;
+	//alert('usuario'+ id_per);
+
+	var id_detalle=document.getElementById(idcarritodetalle).value;
+	//alert('iddetalle'+ id_detalle);
+
+	var id_producto=document.getElementById(id_producto).value;
+	//alert('producto'+ id_producto);
 }
 
 

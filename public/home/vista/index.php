@@ -126,6 +126,8 @@ $codigo_user = $_GET["codigo"];
                 printf("Error: %s\n", $conn->error);
                 exit;
             }
+            $like =0;
+
 
             //Muestra los registros recuperados como quieras
             $products_list = '<ul class="products-wrp">';
@@ -141,9 +143,12 @@ $codigo_user = $_GET["codigo"];
     <div>
 	
    <p> <a href='visualizar_producto.php?codigo_producto={$row["producto_id"]}&codigo_usuario=$codigo_user'>ver descripciones</a><span class='fontawesome-arrow-right'></span></p>
-	<button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" href="visualizar_producto.php?codigo_producto={$row["producto_id"]}&codigo_usuario=$codigo_user" >+</button>  
+	<button class="w3-button w3-xlarge w3-circle w3-red w3-card-4" href="visualizar_producto.php?codigo_producto={$row["producto_id"]}&codigo_usuario=$codigo_user" >+</button>
+	
+	
     <a class="fontawesome-twitter" href="#"></a>
     <a class="fontawesome-thumbs-up" href="#"></a>
+    <p>$like</p>
     <a class="fontawesome-thumbs-down" href="#"></a>
     
     
