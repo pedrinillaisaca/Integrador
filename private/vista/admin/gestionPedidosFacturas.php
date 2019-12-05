@@ -20,8 +20,6 @@
 </head>
 
 <body onload="mostTodosPed()">
-<div style="clear: both; text-align: left;">
-<a  class="icon-circle-left" href="">Volver</a>
 </div>
 
     <h1>Gestion de Pedidos y Facturas</h1>
