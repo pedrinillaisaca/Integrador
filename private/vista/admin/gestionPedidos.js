@@ -85,7 +85,7 @@ function mostrar() {
     return false;
 }
 function mostCorreo() {
-    document.getElementById("correo").style.display = 'block';
+    document.getElementById("correo").removeAttribute('style');
     document.getElementById("fecha").style.display = 'none';
     return false;
 }
@@ -176,7 +176,26 @@ function verFacturaCompleta(id) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     return false;
+} 
+
+function checkOpFac(select){
+    if (select==2) {
+        mostFecha()
+    }else if(select==3){
+        mostCorreo()
+    }
 }
+
+function checkOpPed(select){    
+    if (select==2) {
+        mostFechaPed()
+    }else if(select==3){
+        mostCorreoPed()
+    }else if (select==4){
+        mostrar()
+    }
+}
+
 function mostCorreoPed() {
     document.getElementById("correoPed").style.display = 'block';
     document.getElementById("fechaPed").style.display = 'none';
@@ -184,7 +203,7 @@ function mostCorreoPed() {
 }
 function mostFechaPed() {
     document.getElementById("correoPed").style.display = 'none';
-    document.getElementById("fechaPed").style.display = 'block';
+    document.getElementById("fechaPed").removeAttribute('style');
     return false;
 }
 
