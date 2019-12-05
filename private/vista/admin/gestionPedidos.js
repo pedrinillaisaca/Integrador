@@ -1,5 +1,5 @@
 function ejecutar() {
-    console.log("Pedro")
+    console.log("Funcion de Ejecución")
 
     var indicadorr = document.getElementById("visualizar").value;
 
@@ -7,7 +7,6 @@ function ejecutar() {
         document.getElementById("divDinamico").innerHTML = "";
     } else {
 
-        ////
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari 
             xmlhttp = new XMLHttpRequest();
@@ -22,21 +21,20 @@ function ejecutar() {
             }
         };
 
-        param=document.getElementById(indicadorr).value;
+        if (indicadorr == "todosPedidos") {
+            mostTodosPed()
+        } else {
+            var param = document.getElementById(indicadorr).value;
+            xmlhttp.open("GET", "../../controladores/admin/visualizarPedidos.php?indicador=" + indicadorr + "&parametro=" + param, true);
+            xmlhttp.send();
+            console.log(param);
+        }
         console.log(indicadorr);
-        console.log(param);
-
-
-        
-        xmlhttp.open("GET", "../../controladores/admin/visualizarPedidos.php?indicador="+indicadorr+"&parametro="+param, true);
-
-        xmlhttp.send();
-    
     }
     return false;
 }
 
-function mostTodosPed(){
+function mostTodosPed() {
     console.log("inicial")
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari 
@@ -53,8 +51,9 @@ function mostTodosPed(){
     };
 
     xmlhttp.open("GET", "../../controladores/admin/visualizarTodosPedidos.php", true);
+    xmlhttp.send();
 
-        xmlhttp.send();
+    return false;
 }
 
 
@@ -66,12 +65,12 @@ function cambiarEstado(id) {
             document.getElementById("divDinamico").innerHTML = this.responseText;
         }
     };
-    let id_estado="estado"+id;
-    let estado=document.getElementById(id_estado).value;
+    let id_estado = "estado" + id;
+    let estado = document.getElementById(id_estado).value;
     console.log("CAmbiando estado")
     console.log(id)
     console.log(estado)
-    let url ="../../controladores/admin/cambiarEstadoPedido.php?pedido_id="+id+"&pedido_estado="+estado;
+    let url = "../../controladores/admin/cambiarEstadoPedido.php?pedido_id=" + id + "&pedido_estado=" + estado;
 
     xmlhttp.open("GET", url, true);
 
@@ -81,22 +80,22 @@ function cambiarEstado(id) {
 }
 
 
-
-
-
-function mostrar(){
+function mostrar() {
     document.getElementById('opciones_de_factura').style.display = 'block';
-    }
-function mostCorreo(){
-    document.getElementById("correo").style.display='block';
-    document.getElementById("fecha").style.display='none';
+    return false;
 }
-function mostFecha(){
-    document.getElementById("correo").style.display='none';
-    document.getElementById("fecha").style.display='block';
+function mostCorreo() {
+    document.getElementById("correo").style.display = 'block';
+    document.getElementById("fecha").style.display = 'none';
+    return false;
+}
+function mostFecha() {
+    document.getElementById("correo").style.display = 'none';
+    document.getElementById("fecha").style.display = 'block';
+    return false;
 }
 
-function mostTodas(){
+function mostTodas() {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             //alert("llegue"); 
@@ -105,7 +104,7 @@ function mostTodas(){
     };
 
     console.log("Mostrando todas las facturas")
-    let url ="../../controladores/admin/printAllFacturas.php";
+    let url = "../../controladores/admin/printAllFacturas.php";
 
     xmlhttp.open("GET", url, true);
 
@@ -116,33 +115,25 @@ function mostTodas(){
 
 
 
-function cambiarEstadoFactura(id){
+function cambiarEstadoFactura(id) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             //alert("llegue"); 
             document.getElementById("divDinamico").innerHTML = this.responseText;
         }
     };
-    
-    let id_estadoFactura="estadoFactura"+id;
-    let estado=document.getElementById(id_estadoFactura).value;
 
-    
-    let url ="../../controladores/admin/cambiarEstadoFactura.php?factura_id="+id+"&factura_estado="+estado;
-        
+    let id_estadoFactura = "estadoFactura" + id;
+    let estado = document.getElementById(id_estadoFactura).value;
+    let url = "../../controladores/admin/cambiarEstadoFactura.php?factura_id=" + id + "&factura_estado=" + estado;
     xmlhttp.open("GET", url, true);
-
     xmlhttp.send();
-
     return false;
 
 }
 
 
-function buscarFacturaParam(){
-
-    
-
+function buscarFacturaParam() {
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari 
         xmlhttp = new XMLHttpRequest();
@@ -158,68 +149,57 @@ function buscarFacturaParam(){
     };
 
     var indicador = document.getElementById("buscarFactura").value;
-    var parametro="";
     console.log(indicador)
-    parametro=document.getElementById(indicador).value;       
-    console.log(parametro)
+    if (indicador == "todas") {
+        mostTodas()
+    } else {        
+        var parametro = document.getElementById(indicador).value;
+        console.log(parametro)
+        let url = "../../controladores/admin/printAllFacturasParam.php?indicador=" + indicador + "&parametro=" + parametro;
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+    }
 
-    let url ="../../controladores/admin/printAllFacturasParam.php?indicador="+indicador+"&parametro="+parametro;
-        
-    xmlhttp.open("GET", url, true);
-
-    xmlhttp.send();
 
     return false;
 
 }
 
-function verFacturaCompleta(id){
-
+function verFacturaCompleta(id) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             //alert("llegue"); 
             document.getElementById("divDinamico").innerHTML = this.responseText;
         }
     };
-    let url ="../../controladores/admin/printFacturaCompleta.php?idFactura="+id;
-        
+    let url = "../../controladores/admin/printFacturaCompleta.php?idFactura=" + id;
     xmlhttp.open("GET", url, true);
-
     xmlhttp.send();
-
     return false;
-
-
 }
-function mostCorreoPed(){
-    document.getElementById("correoPed").style.display='block';
-    document.getElementById("fechaPed").style.display='none';
+function mostCorreoPed() {
+    document.getElementById("correoPed").style.display = 'block';
+    document.getElementById("fechaPed").style.display = 'none';
+    return false;
 }
-function mostFechaPed(){
-    document.getElementById("correoPed").style.display='none';
-    document.getElementById("fechaPed").style.display='block';
+function mostFechaPed() {
+    document.getElementById("correoPed").style.display = 'none';
+    document.getElementById("fechaPed").style.display = 'block';
+    return false;
 }
 
-
-function printMapa(lon,lat){    
+function printMapa(lon, lat) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             //alert("llegue"); 
             document.getElementById("divDinamico").innerHTML = this.responseText;
         }
-    };       
-
+    };
     console.log("print mapa")
     console.log(lon)
     console.log(lat)
-    let url ="../../controladores/admin/mapita.php?lon="+lon+"&lat="+lat;
-   
-        
-    xmlhttp.open("GET", url, true);
-
+    let url = "../../controladores/admin/mapita.php?lon=" + lon + "&lat=" + lat;
+    xmlhttp.open("GET", url, true)
     xmlhttp.send();
-
     return false;
-
-
 }

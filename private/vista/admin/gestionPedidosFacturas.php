@@ -1,9 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
-    header("Location: ../../../public/home/vista/login.html");
-}
-$codigo = $_GET["codigo"];
+//session_start();
+//if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+//    header("Location: ../../../public/home/vista/login.html");
+//}
+//$codigo = $_GET["codigo"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,31 +12,34 @@ $codigo = $_GET["codigo"];
     <meta charset="UTF-8">
     <title>Gestion de Pedidos y Facturas</title>
     <link rel="stylesheet" href="../../../css/tablas.css">
-    <script type="text/javascript" src="gestionPedidos.js"></script>
-    <script type="text/javascript" src='../../controladores/admin/maps/examples/index.js'></script>
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <script type="text/javascript" src="gestionPedidos.js"></script>    
     <!--../../controladores/admin/-->
     <!--FALTA
     <script src="main.js" type="text/javascript"></script>-->
 </head>
 
 <body onload="mostTodosPed()">
-
+<div style="clear: both; text-align: left;">
+<a  class="icon-circle-left" href="">Volver</a>
+</div>
 
     <h1>Gestion de Pedidos y Facturas</h1>
+    
     <!--<option value="Generar Ruta">Generar Ruta</option>-->
 
     <div id="opciones">
         <select required name="visualizar" id="visualizar">
             <option value="">Buscar Pedidos:</option>
-            <option onclick="mostTodosPed()"value="todosPedidos">Listar todos los Pedidos</option>
+            <option value="todosPedidos">Listar todos los Pedidos</option>
             <option onclick="mostFechaPed()" value="fechaPed">Buscar Pedido por Fecha</option>
-            <option onclick="mostCorreoPed()" value="correoPed">Buscar Pedido Correo del titular</option>
+            <option onclick="mostCorreoPed()" value="correoPed">Buscar Pedido por Correo del titular</option>
             <option onclick="mostrar()" value="Visualizar Facturas">Buscar Facturas</option>
             <option value="Limpiar">Limpiar</option>
         </select>
         <input type="date" id="fechaPed" name="fechaPed" style="display: none;">
         <input type="text" id="correoPed" name="correoPed" placeholder="Ingresa el correo del titular" style="display: none;">
-        <input type="button" id="ejecutar" name="ejecutar" value="Ejecutar" onclick="return ejecutar()">
+        <input type="button" id="ejecutar" name="ejecutar" value="Ejecutar" onclick="return ejecutar();">
     </div>
 
 
@@ -46,9 +49,9 @@ $codigo = $_GET["codigo"];
         
         <select required name="buscarFactura" id="buscarFactura">
             <option value="">Buscar por: </option>
-            <option onclick="mostTodas()" value="todas">Todas</option>
-            <option onclick="mostFecha()" value="fecha">Fecha</option>
-            <option onclick="mostCorreo()" value="correo">Correo del titular</option>
+            <option  value="todas">Todas</option>
+            <option onclick="mostFecha()" value="fecha">Buscar po Fecha</option>
+            <option onclick="mostCorreo()" value="correo">Buscar por Correo del titular</option>
             
         </select>
         <input type="date" id="fecha" name="fecha" style="display: none;">

@@ -81,6 +81,7 @@ body{
 
 
 #opciones_de_factura{   
+    padding-left: 10%;
     display: none;
     float: left;    
     border-color: black;
