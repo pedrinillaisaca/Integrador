@@ -1,0 +1,44 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color: #4c4b4f;
+    font-size: 1.5vw;
+    background-color: #ddeadf;
+}
+
+.container th{
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+    float: left;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+    display: table;
+    padding: 0 0 10px 0;
+}
+
+.container td:hover {
+    background-color: #dde392;
+    color: #403E10;
+    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #7F7C21 2px 2px, #7F7C21 -3px 3px, #7F7C21;
+    transform: translate3d(2px, -2px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: linear;
+}

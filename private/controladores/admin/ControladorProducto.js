@@ -47,21 +47,17 @@ function insertar(data){
         alert('El valor del Stock debe ser mayor o igual que cero');
         return false;
     }
-    // REVISAR SI SMALL / MEDIUM / LARGE ESTA SELECTED
-    let talla;
-    if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
-        && document.getElementById('large').checked === true)
-        talla = 'S,M,L';
-    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
-        && document.getElementById('large').checked === false)
-        talla = 'S,M';
-    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === false
-        && document.getElementById('large').checked === false)
-        talla = 'S';
-    else {
-        alert('Debe seleccionar al menos una talla de ropa');
-        return false;
-    }
+    let sm = document.getElementById('small').cheked;
+    let md = document.getElementById('medium').cheked;
+    let lg = document.getElementById('large').cheked;
+    if(sm && md && lg){talla = 'S,M,L'}
+    if(sm && md && !lg){talla = 'S,M'}
+    if(sm && !md && lg){talla = 'S,L'}
+    if(!sm && md && lg){talla = 'M,L'}
+    if(!sm && md && !lg){talla = 'S'}
+    if(!sm && md && !lg){talla = 'M'}
+    if(!sm && !md && lg){talla = 'L'}
+    if(!sm && !md && !lg){alert('Debe seleccionar al menos una talla'); return false;}
 
     let nombre = document.getElementById('nombre').value;
     if(nombre === '' || nombre === null){
@@ -177,19 +173,17 @@ function updateProducto(data, state_img){
         return false;
     }
     let talla;
-    if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
-        && document.getElementById('large').checked === true)
-        talla = 'S,M,L';
-    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === true
-        && document.getElementById('large').checked === false)
-        talla = 'S,M';
-    else if(document.getElementById('small').checked === true && document.getElementById('medium').checked === false
-        && document.getElementById('large').checked === false)
-        talla = 'S';
-    else {
-        alert('Debe seleccionar al menos una talla de ropa');
-        return false;
-    }
+    let sm = document.getElementById('small').cheked;
+    let md = document.getElementById('medium').cheked;
+    let lg = document.getElementById('large').cheked;
+    if(sm && md && lg){talla = 'S,M,L'}
+    if(sm && md && !lg){talla = 'S,M'}
+    if(sm && !md && lg){talla = 'S,L'}
+    if(!sm && md && lg){talla = 'M,L'}
+    if(!sm && md && !lg){talla = 'S'}
+    if(!sm && md && !lg){talla = 'M'}
+    if(!sm && !md && lg){talla = 'L'}
+    if(!sm && !md && !lg){alert('Debe seleccionar al menos una talla'); return false;}
 
     let nombre = document.getElementById('nombre').value;
     if(nombre === '' || nombre === null){
