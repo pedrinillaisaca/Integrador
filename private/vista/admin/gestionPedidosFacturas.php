@@ -45,7 +45,7 @@
         <select required name="buscarFactura" id="buscarFactura" onclick="if (typeof(this.selectedIndex) != 'undefined') checkOpFac(this.selectedIndex)">
             <option value="">Buscar por: </option>
             <option value="todas">Todas</option>
-            <option value="fecha">Buscar po Fecha</option>
+            <option value="fecha">Buscar por Fecha</option>
             <option value="correo">Buscar por Correo del titular</option>
 
         </select>
