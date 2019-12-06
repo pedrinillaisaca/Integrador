@@ -1,6 +1,6 @@
 function cargarDatos(){
     let url = '/Bellisima/private/controladores/user/Controlador_Factura.php';
-    let params = 'metodo=getDatos&cli_id='+2;
+    let params = 'metodo=getDatos&cli_id=20';
     let ajax = new XMLHttpRequest();
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -16,12 +16,12 @@ function cargarDatos(){
         }
     };
     ajax.send(params);
-    mostrarFactura();
+    mostrarFactura(4);
 }
 
-function mostrarFactura(){
+function mostrarFactura(cli_id){
     let url = '/Bellisima/private/controladores/user/Controlador_Factura.php';
-    let params = 'metodo=mostrar_facturas';
+    let params = "metodo=mostrar_facturas&cli_id=20";
     let ajax = new XMLHttpRequest();
     ajax.open('POST', url, true);
     ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -29,6 +29,7 @@ function mostrarFactura(){
         if(this.status === 200 && this.readyState === 4){
             let leo = this.responseText;
             let spliteo = leo.split('||');
+            console.log(spliteo);
             document.getElementById('hidden_carrito').innerText=spliteo[1];
             console.log(spliteo[1]);
             document.getElementById('factura').innerHTML=spliteo[0];

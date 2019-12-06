@@ -1,5 +1,8 @@
 <?php
 
+    session_start();
+
+
     include '../../../config/conexionBD.php';
     if($_POST['metodo']=='getDatos'){
         getDatosPersona();
@@ -18,6 +21,7 @@
         $persona_cedula = '';
 
         $persona = $_POST['cli_id'];
+        var_dump($_POST);
         $sql_fac = "select max(factura_id) as maximo from factura_cabecera";
         $sql = "select * from persona where per_id = '$persona'";
         $resultados = $conn->query($sql);
@@ -43,7 +47,8 @@
 
     function mostrarFacturas(){
         global $conn;
-        $sqlCabecera = 'select * from carrito_cabecera where (select max(carrito_id)) = carrito_id and fk_persona_carrito=20';
+        $perrito_id = $_POST['cli_id'];
+        $sqlCabecera = "select * from carrito_cabecera where (select max(carrito_id) from carrito_cabecera) = carrito_id and fk_persona_carrito=$perrito_id";
         $result = $conn->query($sqlCabecera);
 
         $subtotal = 0;
@@ -99,12 +104,19 @@
         if($conn->query($sql)){
             $sql = "insert into factura_detalle(factura_cantidad, factura_precio_unit, factura_precio_total, fk_factura_det_producto, fk_factura_det_factura_cabecera) 
                 select carrito_det_cantidad, carrito_det_total/carrito_det_cantidad, carrito_det_total, fk_carrito_producto,
-                       maximo.mx  from carrito_detalle, (select max(factura_id) as mx from factura_cabecera) as maximo where fk_carrito_cabecera='13'";
+                       maximo.mx  from carrito_detalle, (select max(factura_id) as mx from factura_cabecera) as maximo where fk_carrito_cabecera=$carrito_id";
             if($conn->query($sql)){
-                echo "Se ha insertado la factura correctamente. 'Dont worry, be happy'";
+                $sql = "insert into pedido(pedido_fecha, fk_pedido_factura) select now(), max(factura_id) from factura_cabecera";
+                if($conn->query($sql)){
+                    echo "Se ha creado la factura y el pedido correctamente!!";
+                }
+            }else{
+                echo "Error al ingresar el detalle de la factura";
             }
+        }else{
+            echo "Error al ingresar la cabecera";
         }
-        echo $sql;
+        $conn->close();
     }
 
 ?>
